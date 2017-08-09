@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "name": "Keystone Forum",
+      "label": "Weekly",
+      "hours": 48,
+      "id": 1
+    },
+    {
+      "name": "Engineering Triage",
+      "label": "Weekly",
+      "hours": 32,
+      "id": 2
+    },
+    {
+      "name": "Tech Team Daily Standup",
+      "label": "Daily",
+      "hours": 80,
+      "id": 3
+    },
+    {
+      "name": "Engineering 1:1s",
+      "label": "Biweekly/Monthly",
+      "hours": 34,
+      "id": 4
+    },
+    {
+      "name": "Alignment Triangle + Presentations Triage",
+      "label": "Weekly",
+      "hours": 24,
+      "id": 5
+    },
+    {
+      "name": "Daily Activities Triage",
+      "label": "Weekly",
+      "hours": 8,
+      "id": 6
+    }
+  ],
+  "links": [
+    {
+      "source": 2,
+      "target": 1
+    },
+    {
+      "source": 2,
+      "target": 3
+    },
+    {
+      "source": 3,
+      "target": 2
+    },
+    {
+      "source": 2,
+      "target": 4
+    },
+    {
+      "source": 4,
+      "target": 2
+    },
+    {
+      "source": 5,
+      "target": 2
+    },
+    {
+      "source": 6,
+      "target": 2
+    },
+    {
+      "source": 5,
+      "target": 6
+    },
+    {
+      "source": 6,
+      "target": 5
+    }
+  ]
+}

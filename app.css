@@ -1,0 +1,57 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font: 12px sans-serif;
+}
+
+body {
+  background-color: blue;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: #042243;
+  background-image: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  background-repeat: no-repeat;
+}
+
+.node {}
+
+
+.node-title {
+  fill: white;
+  font-size: 14px;
+}
+
+.node-label {
+  fill: white;
+}
+
+.node-hours {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.link {
+  stroke: #000;
+  stroke-opacity: .6;
+  stroke-width: 1px;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 56px;
+  padding: 2px;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
