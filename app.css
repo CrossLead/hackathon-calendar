@@ -8,6 +8,7 @@ html, body {
 
 body {
   background-color: blue;
+  overflow: hidden;
 }
 
 svg {
@@ -36,6 +37,7 @@ svg {
 .node-hours {
   font-weight: bold;
   font-size: 16px;
+  fill: #333333;
 }
 
 .link {

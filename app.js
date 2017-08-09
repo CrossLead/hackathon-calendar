@@ -34,8 +34,8 @@ var simulation = d3.forceSimulation()
   .force('link', d3.forceLink().id(function (d) { return d.id; }).distance(200).strength(1))
   .force('charge', d3.forceManyBody().strength(-3000))
   .force('center', d3.forceCenter(width / 2, height / 2))
-  // .force('x', d3.forceX())
-  // .force('y', d3.forceY());
+// .force('x', d3.forceX())
+// .force('y', d3.forceY());
 
 d3.json('data.json', function (error, graph) {
   if (error) throw error;
@@ -101,34 +101,53 @@ function update(links, nodes) {
     .domain([0, max / .75])
     .range([0, 1]);
 
+  var rg = node.append('radialGradient')
+    .attr('id', function (d) { return 'mcglow' + d.id })
+    .attr('class', 'mcglow');
+
+  rg.append('stop')
+    .attr('class', 'color')
+    .attr('offset', '50%')
+    .attr('stop-color', function(d) { return d3.interpolateOranges(colorScale(d.hours || 0)) });
+
+  rg.append('stop')
+    .attr('offset', '100%')
+    .attr('stop-color', '#888')
+    .attr('stop-opacity', 0);
+
+  // sel.select('.ring').attr('style', 'fill:url(#mcglow' + d.id + ')');
+  node.append('circle')
+    .attr('r', nodeRadius + 20)
+    .attr('style', function(d) { return 'fill:url(#mcglow'+ d.id + ')' });
+
   node.append('circle')
     .attr('r', nodeRadius)
     .style('fill', function (d, i) {
       return d3.interpolateOranges(colorScale(d.hours || 0));
     });
-    // .on('mouseover', function (d) {
-    //   tooltip.transition()
-    //     .duration(200)
-    //     .style('opacity', .9);
-    //   tooltip.html('Hours spent monthly: ' + d.hours)
-    //     .style('left', (d3.event.pageX) + 'px')
-    //     .style('top', (d3.event.pageY - 28) + 'px');
-    // })
-    // .on('mouseout', function (d) {
-    //   tooltip.transition()
-    //     .duration(500)
-    //     .style('opacity', 0);
-    // });
+  // .on('mouseover', function (d) {
+  //   tooltip.transition()
+  //     .duration(200)
+  //     .style('opacity', .9);
+  //   tooltip.html('Hours spent monthly: ' + d.hours)
+  //     .style('left', (d3.event.pageX) + 'px')
+  //     .style('top', (d3.event.pageY - 28) + 'px');
+  // })
+  // .on('mouseout', function (d) {
+  //   tooltip.transition()
+  //     .duration(500)
+  //     .style('opacity', 0);
+  // });
 
   // node.append('title')
   //   .text(function (d) { return d.id; });
 
   node.append('text')
-    .attr('dy', nodeRadius*-1 -5)
+    .attr('dy', nodeRadius * -1 - 5)
     .attr('text-anchor', 'middle')
     .text(function (d) { return d.name; })
     .attr('class', 'node-title');
-    
+
   node.append('text')
     .attr('dy', nodeRadius + 15)
     .attr('text-anchor', 'middle')
